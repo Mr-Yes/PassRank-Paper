@@ -28,7 +28,7 @@ int main()
 {
     FILE *fpin;
     FILE *fpout;
-    if(fpin=fopen("E:\\PassRankDataSet\\phpbb.txt","r"))
+    if(fpin=fopen("F:\\PassRankDataSet\\phpbb.txt","r"))
         puts("phpbb\n");
     else
         puts("Open Failed\n");
@@ -51,7 +51,7 @@ int main()
         totalNum++;
     }
     printf("The totalNum is: %d\n",totalNum);
-    printf("The maxLen is: %d\n",maxLen);
+    //printf("The maxLen is: %d\n",maxLen);
     int i,j;
     for(i=0;i<totalNum;i++){
         printf("Cmping Line:%d \n",i);
@@ -64,8 +64,7 @@ int main()
                 case 3:distCnt3++;break;
                 case 4:distCnt4++;break;
             }
-            if(dist<4)
-                break;
+
         }
     }
 
