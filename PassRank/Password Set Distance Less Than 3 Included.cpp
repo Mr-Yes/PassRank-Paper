@@ -1,8 +1,3 @@
-/*
-* This is The version of
-* password set distance with all included
-*/
-
 #include <stdio.h>
 #include <string.h>
 #define psNum 20000000   //Password Set Total Number
@@ -18,18 +13,18 @@ int main()
     FILE *fpin;
     FILE *fpout;
     FILE *fpresult;
-    if(fpin=fopen("E:\\PassRankDataSet\\yahoo.txt","r"))
-        puts("read Open Ready\n");
+    if(fpin=fopen("E:\\PassRankDataSet\\phpbb.txt","r"))
+        puts("phpbb read Open Ready\n");
     else
         puts("Open Failed\n");
 
-    if(fpout=fopen("E:\\PassRankDataSet\\yahoo_Distance_Matrix.csv","w"))
-        puts("write Open Ready\n");
+    if(fpout=fopen("E:\\PassRankDataSet\\phpbb_Distance_Matrix.csv","w"))
+        puts("phpbb write Open Ready\n");
     else
         puts("Open Failed\n");
 
-    if(fpresult=fopen("E:\\PassRankDataSet\\yahoo_Analyse_Result.txt","w"))
-        puts("result Open Ready\n");
+    if(fpresult=fopen("E:\\PassRankDataSet\\phpbb_Analyse_Result.txt","w"))
+        puts("phpbb result Open Ready\n");
     else
         puts("Open Failed\n");
 
@@ -62,7 +57,6 @@ int main()
 
     for(i=0;i<totalNum;i++){
         int k;
-        //complete the Matrix with leading 0
         for(k=0;k<i;k++){
             fprintf(fpout,"0");
             if(i<totalNum-1)
@@ -89,6 +83,7 @@ int main()
         }
     }
 
+    int totalMatch=0;
     for(i=0;i<maxDist;i++){
         fprintf(fpresult,"%d,",distCnt[i]);
     }
@@ -140,5 +135,4 @@ int editDistance(char *s,char *t,int j,int i){
         return i;
     }
 }*/
-
 

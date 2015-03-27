@@ -1,8 +1,3 @@
-/*
-* This is The version of
-* password set distance with all included
-*/
-
 #include <stdio.h>
 #include <string.h>
 #define psNum 20000000   //Password Set Total Number
@@ -18,18 +13,18 @@ int main()
     FILE *fpin;
     FILE *fpout;
     FILE *fpresult;
-    if(fpin=fopen("E:\\PassRankDataSet\\yahoo.txt","r"))
-        puts("read Open Ready\n");
+    if(fpin=fopen("E:\\PassRankDataSet\\phpbb.txt","r"))
+        puts("phpbb read Open Ready\n");
     else
         puts("Open Failed\n");
 
-    if(fpout=fopen("E:\\PassRankDataSet\\yahoo_Distance_Matrix.csv","w"))
-        puts("write Open Ready\n");
+    if(fpout=fopen("E:\\PassRankDataSet\\phpbb_Distance_Matrix.csv","w"))
+        puts("phpbb write Open Ready\n");
     else
         puts("Open Failed\n");
 
-    if(fpresult=fopen("E:\\PassRankDataSet\\yahoo_Analyse_Result.txt","w"))
-        puts("result Open Ready\n");
+    if(fpresult=fopen("E:\\PassRankDataSet\\phpbb_Analyse_Result.txt","w"))
+        puts("phpbb result Open Ready\n");
     else
         puts("Open Failed\n");
 
@@ -62,7 +57,6 @@ int main()
 
     for(i=0;i<totalNum;i++){
         int k;
-        //complete the Matrix with leading 0
         for(k=0;k<i;k++){
             fprintf(fpout,"0");
             if(i<totalNum-1)
@@ -79,8 +73,7 @@ int main()
                 printf("Warning: The dist_Temp has exceed the maxDist expected\n");
                 return -1;
             }
-            if(dist_Temp> -1)
-                distCnt[dist_Temp]++;
+            distCnt[dist_Temp]++;
             fprintf(fpout,"%d",dist_Temp);
             if(j<totalNum-1)
                 fprintf(fpout,",");
@@ -89,6 +82,7 @@ int main()
         }
     }
 
+    int totalMatch=0;
     for(i=0;i<maxDist;i++){
         fprintf(fpresult,"%d,",distCnt[i]);
     }
@@ -106,8 +100,6 @@ int levenshtein(char *s1, char *s2) {
     unsigned int x, y, s1len, s2len;
     s1len = strlen(s1);
     s2len = strlen(s2);
-    if(  (s1len-s2len >3) || (s2len-s1len >3)  )
-        return -1;
     unsigned int matrix[s2len+1][s1len+1];
     matrix[0][0] = 0;
     for (x = 1; x <= s2len; x++)
