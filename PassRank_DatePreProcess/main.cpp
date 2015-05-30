@@ -8,8 +8,8 @@
 #define psNum 20000000   //Password Set Total Number
 #define maxDist 100     //the max distance expected
 
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <stdlib.h>     // srand, rand
+#include <time.h>       // time
 
 char pswd[psNum][30];
 int psWeight[psNum];
@@ -22,17 +22,17 @@ int main()
     FILE *fpin;
     FILE *fpout;
     FILE *fpnode;
-    if(fpin=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\12306\\12306_top100_frequence_count.txt","r"))
+    if(fpin=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\PassRankDataSet\\phpbb_frequence_count.txt","r"))
         puts("read Open Ready\n");
     else
         puts("Open Failed\n");
 
-    if(fpout=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\12306\\12306_top100_Edge_demo.csv","w"))
+    if(fpout=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\PassRankDataSet\\phpbb_Edge_demo.csv","w"))
         puts("Edge Open Ready\n");
     else
         puts("Open Failed\n");
 
-    if(fpnode=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\12306\\12306_top100_node_demo.csv","w"))
+    if(fpnode=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\PassRankDataSet\\phpbb_Node_demo.csv","w"))
         puts("Node Open Ready\n");
     else
         puts("Open Failed\n");
@@ -46,7 +46,7 @@ int main()
     //To Detect any passwd longer than 30
     while(fscanf(fpin,"%d\t%s",&(psWeight[totalNum]),pswd[totalNum]) != EOF){   //Read in the password set
         fprintf(fpnode,"%s,%d\n",pswd[totalNum],psWeight[totalNum]);
-        printf("%s,%d\n",pswd[totalNum],psWeight[totalNum]);
+        //printf("%s,%d\n",pswd[totalNum],psWeight[totalNum]);
         if(psWeight[totalNum]== 0) return -1;
         totalNum++;
         if(totalNum>psNum){
@@ -126,4 +126,63 @@ int editDistance(char *s,char *t,int j,int i){
     }
 }*/
 
+/*
 
+#include <stdio.h>
+#include <string.h>
+#define psNum 20000000   //Password Set Total Number
+#define maxDist 100     //the max distance expected
+
+#include <stdlib.h>     // srand, rand
+#include <time.h>       // time
+
+char pswd[psNum][30];
+int psWeight[psNum];
+
+int main()
+{
+    FILE *fpin;
+    FILE *fpout;
+    FILE *fpnode;
+    if(fpin=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\Edge_Node_Demo_Result\\12306\\12306_top100_frequence_count.txt","r"))
+        puts("read Open Ready\n");
+    else
+        puts("Open Failed\n");
+
+    if(fpout=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\Edge_Node_Demo_Result\\12306\\12306_top100_frequence_count_tmp.csv","w"))
+        puts("Edge Open Ready\n");
+    else
+        puts("Open Failed\n");
+
+    if(fpnode=fopen("F:\\Google Drive\\Laboratory\\PassRankPaper\\Edge_Node_Demo_Result\\12306\\12306_top100_frequence_count_tmp2.txt","w"))
+        puts("Node Open Ready\n");
+    else
+        puts("Open Failed\n");
+
+
+    int i,j;
+
+    int totalNum=0;
+    //To Detect any passwd longer than 30
+    while(fscanf(fpin,"%s %d",pswd[totalNum],&(psWeight[totalNum])) != EOF){   //Read in the password set
+        fprintf(fpnode,"%s\t%d\n",pswd[totalNum],psWeight[totalNum]);
+        fprintf(fpout,"%s:%d\n",pswd[totalNum],psWeight[totalNum]);
+        //printf("%s,%d\n",pswd[totalNum],psWeight[totalNum]);
+        if(psWeight[totalNum]== 0) return -1;
+        totalNum++;
+        if(totalNum>psNum){
+                printf("totalNum is: %d\n",totalNum);
+                printf("Warning: The password has exceed the Total Number\n");
+                return -1;
+        }
+    }
+    printf("The totalNum is: %d\n",totalNum);
+
+    fclose(fpin);
+    fclose(fpout);
+    fclose(fpnode);
+    return 0;
+}
+
+
+*/
